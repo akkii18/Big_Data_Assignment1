@@ -15,7 +15,7 @@ For Task 1: -
 1) Create a folder called input_task1_2_3 on HDFS using the HUE interface and upload all the files in it from the local folder input_task1_2_3
 2) Run the code for Task 1 using following command on your commandline
 	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask1 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task1
-3) Check the results on HUE HDFS when the code is executed successfully 
+3) Check the results on HUE HDFS when the code is executed successfully 	
 
 For Task 2: -
 1) Create a folder called input_task2_3_test1 on HDFS using the HUE interface and upload all the files in it from the local folder input_task2_3_test1
@@ -34,4 +34,5 @@ For Task 3: -
 2) Check the results on HUE HDFS when the code is executed successfully
 
 Analysis of Task 3: -
+
 
