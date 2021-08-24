@@ -1,0 +1,37 @@
+***********************************
+Name: Akash Sunil Nirantar
+Student ID: s3813209
+Title: Big data - Assignment 1
+***********************************
+	
+Prerequisites: -
+1) Login to your AWS EMR cluster from commandline (using ssh)
+2) Open the HUE interface in your browser
+3) Upload Assignment1Maven-0.0.1-SNAPSHOT.jar to your HDFS using HUE interface
+4) Copy the above file to your EMR cluster using the command 
+	hadoop fs -copyToLocal /user/<your_username>/Assignment1Maven-0.0.1-SNAPSHOT.jar ~/
+
+For Task 1: -
+1) Create a folder called input_task1_2_3 on HDFS using the HUE interface and upload all the files in it from the local folder input_task1_2_3
+2) Run the code for Task 1 using following command on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask1 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task1
+3) Check the results on HUE HDFS when the code is executed successfully 
+
+For Task 2: -
+1) Create a folder called input_task2_3_test1 on HDFS using the HUE interface and upload all the files in it from the local folder input_task2_3_test1
+2) Create a folder called input_task2_3_test2 on HDFS using the HUE interface and upload all the files in it from the local folder input_task2_3_test2
+3) Run the code for Task 2 using following commands on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task2_test1
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task2_3_test1 /user/<your_username>/output_task2_test2
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task2_3_test2 /user/<your_username>/output_task2_test3
+4) Check the results on HUE HDFS when the code is executed successfully
+
+For Task 3: -
+1) Run the code for Task 3 using following commands on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task3_test1
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task2_3_test1 /user/<your_username>/output_task3_test2
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task2_3_test2 /user/<your_username>/output_task3_test3
+2) Check the results on HUE HDFS when the code is executed successfully
+
+Analysis of Task 3: -
+
