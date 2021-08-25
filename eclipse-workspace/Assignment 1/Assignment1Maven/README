@@ -33,7 +33,7 @@ For Task 3: -
 	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task2_3_test2 /user/<your_username>/output_task3_test3
 2) Check the results on HUE HDFS when the code is executed successfully
 
-Analysis of Task 3: -
+Task 4 - Analysis: -
 
 Results: -
 
