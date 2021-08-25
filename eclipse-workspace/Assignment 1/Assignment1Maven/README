@@ -1,0 +1,79 @@
+***********************************
+Name: Akash Sunil Nirantar
+Student ID: s3813209
+Title: Big data - Assignment 1
+***********************************
+	
+Prerequisites: -
+1) Login to your AWS EMR cluster from commandline (using ssh)
+2) Open the HUE interface in your browser
+3) Upload Assignment1Maven-0.0.1-SNAPSHOT.jar to your HDFS using HUE interface
+4) Copy the above file to your EMR cluster using the command 
+	hadoop fs -copyToLocal /user/<your_username>/Assignment1Maven-0.0.1-SNAPSHOT.jar ~/
+
+For Task 1: -
+1) Create a folder called input_task1_2_3 on HDFS using the HUE interface and upload all the files in it from the local folder input_task1_2_3
+2) Run the code for Task 1 using following command on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask1 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task1
+3) Check the results on HUE HDFS when the code is executed successfully 	
+
+For Task 2: -
+1) Create a folder called input_task2_3_test1 on HDFS using the HUE interface and upload all the files in it from the local folder input_task2_3_test1
+2) Create a folder called input_task2_3_test2 on HDFS using the HUE interface and upload all the files in it from the local folder input_task2_3_test2
+3) Run the code for Task 2 using following commands on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task2_test1
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task2_3_test1 /user/<your_username>/output_task2_test2
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask2 /user/<your_username>/input_task2_3_test2 /user/<your_username>/output_task2_test3
+4) Check the results on HUE HDFS when the code is executed successfully
+
+For Task 3: -
+1) Run the code for Task 3 using following commands on your commandline
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task1_2_3 /user/<your_username>/output_task3_test1
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task2_3_test1 /user/<your_username>/output_task3_test2
+	hadoop jar Assignment1Maven-0.0.1-SNAPSHOT.jar group.Akash.Assignment1Maven.WordCountJobTask3 /user/<your_username>/input_task2_3_test2 /user/<your_username>/output_task3_test3
+2) Check the results on HUE HDFS when the code is executed successfully
+
+Analysis of Task 3: -
+
+Results: -
+
+Task 2 Results											Task 3 Results		
+Test 1													Test 1		
+Variable			Value	Unit						Variable			Value	Unit
+MILLIS_MAPS			23144	ms							MILLIS_MAPS			18478	ms
+MILLIS_REDUCES		18634	ms							MILLIS_REDUCES		18763	ms
+MAP_OUTPUT_RECORDS	13213	number of records			MAP_OUTPUT_RECORDS	6206	number of records
+								
+Test 2													Test 2		
+MILLIS_MAPS			178327	ms							MILLIS_MAPS			176109	ms
+MILLIS_REDUCES		26372	ms							MILLIS_REDUCES		39089	ms
+MAP_OUTPUT_RECORDS	66065	number of records			MAP_OUTPUT_RECORDS	31030	number of records
+								
+Test 3													Test 3		
+MILLIS_MAPS			639503	ms							MILLIS_MAPS			651646	ms
+MILLIS_REDUCES		107014	ms							MILLIS_REDUCES		121247	ms
+MAP_OUTPUT_RECORDS	224621	number of records			MAP_OUTPUT_RECORDS	105502	number of records
+
+Observation and Conclusion: -
+
+Three tests were performed with following configurations:-
+
+Test 1 - Only three files
+Test 2 - 5 copies of each file i.e. 15 files in total
+Test 3 - 17 copies of each file i.e. 51 files in total
+
+The results for parameters MILLIS_MAPS(total time taken by mappers), MILLIS_REDUCES (total time taken by reducers), MAP_OUTPUT_RECORDS (number of key pairs sent to reducer from the mapper) for all the tests and tasks are given above. 
+	-As you can see there is a significant difference between the number of records the mapper is passing to the reducer. In task 3, in all the tests the 
+	 number of records passed are half from what we observed in Task 2 tests
+ 	-The time taken by mappper and reducer is almost same and it doesn't affect the time efficiency of the code but only space efficiency.
+ 	-Hence, we can confirm that when we perform in-mapper combining without preserving the state across the documents (Task 2) then it allocates memories to
+ 	 multiple HashMaps. But in the case of in-mapper combining with preserving the state across the documents a HashMap is shared in between multiple documents
+ 	 that is why it needs less memory to perform.
+ 	-It is beneficial to use in-mapper combining with preserving the state across the documents when you have any memory constraint on hadoop side.
+ 	 Because it will halved the number of HashMaps created. The above demonstration is a very basic example of map reduce but if you have a large data to process
+ 	 then it becomes difficult and time consuming if you perform in-mapper combining without preserving the state across the documents.
+ 	 
+
+
+
+
